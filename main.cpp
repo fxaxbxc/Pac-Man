@@ -1,5 +1,6 @@
 #include <ncurses.h>
-
+#include <iostream>
+using namespace std;
 int main() {
     initscr();                 // Mulai mode ncurses.
     cbreak();                  // Baca tombol tanpa menunggu Enter.
