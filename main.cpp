@@ -17,4 +17,6 @@ int main() {
 
     endwin();                  // Pulihkan tampilan terminal.
     return 0;
+
+    cout << "Hello, World!" << endl;
 }
