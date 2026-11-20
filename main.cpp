@@ -9,6 +9,8 @@ int main() {
 
     mvprintw(1, 2, "Contoh ncurses berjalan di WSL");
     mvprintw(3, 2, "Tekan tombol panah atau q untuk keluar.");
+    mvprintw(5, 2, "Mitha otw buat jj keterima STAN!!");
+    mvprintw(7, 2, "Bismillah ");
     refresh();
 
     int key;
@@ -19,5 +21,5 @@ int main() {
     endwin();                  // Pulihkan tampilan terminal.
     return 0;
 
-    cout << "tes!" << endl;
+    cout << "yeayy!" << endl;
 }
