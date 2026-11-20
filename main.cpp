@@ -11,6 +11,7 @@ int main() {
     mvprintw(3, 2, "Tekan tombol panah atau q untuk keluar.");
     mvprintw(5, 2, "Mitha otw buat jj keterima STAN!!");
     mvprintw(7, 2, "Bismillah ");
+    mvprintw(16, 17, "Naura jadi orang sukses");
     refresh();
 
     int key;
@@ -21,5 +22,9 @@ int main() {
     endwin();                  // Pulihkan tampilan terminal.
     return 0;
 
+
     cout << "yeayy!" << endl;
+
+    cout << "test" << endl;  
+
 }
