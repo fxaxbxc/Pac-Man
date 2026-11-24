@@ -1,30 +1,55 @@
 #include <ncurses.h>
-#include <iostream>
-using namespace std;
-int main() {
-    initscr();                 // Mulai mode ncurses.
-    cbreak();                  // Baca tombol tanpa menunggu Enter.
-    noecho();                  // Jangan tampilkan tombol yang ditekan.
-    keypad(stdscr, TRUE);      // Aktifkan tombol panah.
 
-    mvprintw(1, 2, "Contoh ncurses berjalan di WSL");
-    mvprintw(3, 2, "Tekan tombol panah atau q untuk keluar.");
-    mvprintw(5, 2, "Mitha otw buat jj keterima STAN!!");
-    mvprintw(7, 2, "Bismillah ");
-    mvprintw(16, 17, "Naura jadi orang sukses");
-    refresh();
+// Mengatur konfigurasi permainan
+const int LEBAR = 31;
+const int TINGGI = 21;
+const int JUMLAH_HANTU = 4;
 
-    int key;
-    do {
-        key = getch();
-    } while (key != 'q' && key != 'Q');
+// Menyimpan isi labirin
+char labirin[TINGGI][LEBAR];
 
-    endwin();                  // Pulihkan tampilan terminal.
-    return 0;
+// Menyimpan posisi Pac-Man
+int pemainX, pemainY;
 
+// Menyimpan posisi empat hantu
+int hantuX[JUMLAH_HANTU];
+int hantuY[JUMLAH_HANTU];
 
-    cout << "yeayy!" << endl;
+// Menyimpan informasi permainan
+int skor = 0;
+int nyawa = 3;
+int sisaTitik = 0;
+int statusPermainan = 0;
 
-    cout << "test" << endl;  
+bool mulutTerbuka = true;
 
+// Mengatur warna setiap hantu
+int warnaHantu[JUMLAH_HANTU] = {
+    3, 4, 5, 7
+};
+
+// Menentukan simbol setiap hantu
+char simbolHantu[JUMLAH_HANTU] = {
+    'R', 'P', 'B', 'O'
+};
+
+// Menentukan posisi awal Pac-Man dan empat hantu
+void resetPositions() {
+
+    // Posisi Pac-Man
+    pemainX = 1;
+    pemainY = 1;
+
+    // Posisi empat hantu
+    hantuX[0] = 13;
+    hantuY[0] = 9;
+
+    hantuX[1] = 14;
+    hantuY[1] = 9;
+
+    hantuX[2] = 16;
+    hantuY[2] = 9;
+
+    hantuX[3] = 17;
+    hantuY[3] = 9;
 }
