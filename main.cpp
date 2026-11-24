@@ -143,3 +143,27 @@ void initializeMap() {
         }
     }
 }
+// Mengatur ulang kondisi permainan
+void resetGame() {
+
+    initializeMap();
+
+    skor = 0;
+    nyawa = 3;
+
+    mulutTerbuka = true;
+
+    statusPermainan = 1;
+}
+
+// Memeriksa apakah posisi merupakan dinding
+bool isWall(int posisiX, int posisiY) {
+
+    if (posisiX < 0 || posisiX >= LEBAR ||
+        posisiY < 0 || posisiY >= TINGGI) {
+
+        return true;
+    }
+
+    return labirin[posisiY][posisiX] == '#';
+}
