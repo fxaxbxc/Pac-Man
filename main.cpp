@@ -210,3 +210,121 @@ void drawMenu() {
 
     refresh();
 }
+
+// Menggambar labirin
+void drawMap() {
+
+    for (int baris = 0; baris < TINGGI; baris++) {
+
+        for (int kolom = 0; kolom < LEBAR; kolom++) {
+
+            int layarX = kolom + 2;
+            int layarY = baris + 3;
+
+            if (labirin[baris][kolom] == '#') {
+
+                attron(COLOR_PAIR(1) | A_BOLD);
+
+                mvaddch(
+                    layarY,
+                    layarX,
+                    ACS_CKBOARD
+                );
+
+                attroff(COLOR_PAIR(1) | A_BOLD);
+            }
+
+            else if (labirin[baris][kolom] == '.') {
+
+                attron(COLOR_PAIR(6));
+
+                mvaddch(
+                    layarY,
+                    layarX,
+                    ACS_BULLET
+                );
+
+                attroff(COLOR_PAIR(6));
+            }
+
+            else {
+
+                mvaddch(layarY, layarX, ' ');
+            }
+        }
+    }
+}
+
+// Menggambar Pac-Man
+void drawPlayer() {
+
+    attron(COLOR_PAIR(2) | A_BOLD);
+
+    char simbol = mulutTerbuka ? 'C' : 'O';
+
+    mvaddch(
+        pemainY + 3,
+        pemainX + 2,
+        simbol
+    );
+
+    attroff(COLOR_PAIR(2) | A_BOLD);
+}
+
+// Menggambar empat hantu
+void drawGhosts() {
+
+    for (int indeks = 0; indeks < JUMLAH_HANTU; indeks++) {
+
+        attron(
+            COLOR_PAIR(warnaHantu[indeks]) | A_BOLD
+        );
+
+        mvaddch(
+            hantuY[indeks] + 3,
+            hantuX[indeks] + 2,
+            simbolHantu[indeks]
+        );
+
+        attroff(
+            COLOR_PAIR(warnaHantu[indeks]) | A_BOLD
+        );
+    }
+}
+
+// Menampilkan informasi permainan
+void drawHUD() {
+
+    attron(COLOR_PAIR(2) | A_BOLD);
+
+    mvprintw(0, 2, "PAC-MAN");
+
+    attroff(COLOR_PAIR(2) | A_BOLD);
+
+    attron(COLOR_PAIR(6));
+
+    mvprintw(0, 13, "SCORE: %06d", skor);
+    mvprintw(0, 29, "LIVES: %d", nyawa);
+    mvprintw(1, 13, "DOTS: %d", sisaTitik);
+
+    attroff(COLOR_PAIR(6));
+}
+
+// Menggabungkan seluruh tampilan permainan
+void drawGame() {
+
+    clear();
+
+    drawHUD();
+
+    drawMap();
+
+    drawPlayer();
+
+    drawGhosts();
+
+    mvprintw(26, 2, "WASD / ARROWS: MOVE");
+    mvprintw(27, 2, "Q: BACK TO MENU");
+
+    refresh();
+}
