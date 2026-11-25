@@ -1,5 +1,7 @@
 #include <ncurses.h>
 #include <iostream>
+#include <fstream>
+#include <string>
 
 // Mengatur konfigurasi permainan
 const int LEBAR = 31;
@@ -406,4 +408,32 @@ void loadLeaderboard() {
     }
 
     file.close();
+}
+
+// Buble sort
+
+void sortLeaderboard() {
+
+    for (int indeks = 0; indeks < jumlahSkor - 1; indeks++) {
+
+        for (int urutan = 0;
+             urutan < jumlahSkor - indeks - 1;
+             urutan++) {
+
+            if (skorPemain[urutan] < skorPemain[urutan + 1]) {
+
+                int skorSementara = skorPemain[urutan];
+
+                skorPemain[urutan] = skorPemain[urutan + 1];
+
+                skorPemain[urutan + 1] = skorSementara;
+
+                string namaSementara = namaPemain[urutan];
+
+                namaPemain[urutan] = namaPemain[urutan + 1];
+
+                namaPemain[urutan + 1] = namaSementara;
+            }
+        }
+    }
 }
