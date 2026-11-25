@@ -325,6 +325,61 @@ void drawGame() {
 
     mvprintw(26, 2, "WASD / ARROWS: MOVE");
     mvprintw(27, 2, "Q: BACK TO MENU");
-
+ 
     refresh();
+
+    // cek posisisi hantu lain
+
+    bool ghostOccupied(int x, int y, int currentGhost) {
+
+        for (int i = 0; i < GHOST_COUNT; i ++) {
+
+            if ( i == curentGhost) {
+                continue;
+            }
+
+            if (ghostX[i] == && ghostY[i] == y){
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // PERGERAKAN EMPAT HANTU
+    void moveGhosts() {
+         int dx[4] =   {0, 0, -1, 1};
+         int dy[4] = {-1, 1, 0, 0};
+          
+         for (int index = 0; indeks < JUMLAH_HANTU; indeks++) {
+
+            int posisiTerbaikX = hantuX[indeks];
+            int posisiTerbaikY = hantuY[indeks];
+
+            int jarakTerbaik =
+                abs(pemainX - hantuX[indeks]) + abs(pemainY - hantuY[indeks]);
+
+// MENCARI JALUR TERDEKAT
+            for (int arah = 0; arah < 4; arah++) {
+
+                int tujuanX = hantuX[indeks] + arahX[arah];
+                int tujuanY = hantuY[indeks] + arahY[arah];
+
+// MENGHINDARI DINDING DAN HANTU LAIN
+
+            if (!sWall(tujuanX, tujuanY) && !ghostOccupied(tujuanX, tujuanY, indeks)) {
+            int jarak = abs(pemainX - tujuanX) + abs(pemainY - tujuanY);
+            if (jarak < jarakTerbaik) {
+        jarakTerbaik = jarak;
+        posisiTerbaikX  = tujuanX;
+        posisiTerbaikY = tujuanY;
+
+    }
+}
+            }
+            hantuX[indeks] = posisiTerbaikx;
+            hantuY[indeks] = posisiTerbaikY;
+         }
+    }
+    // RESET POSISI SETELAH TABRAKAN
 }
