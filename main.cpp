@@ -167,3 +167,45 @@ bool isWall(int posisiX, int posisiY) {
 
     return labirin[posisiY][posisiX] == '#';
 }
+
+// Menampilkan judul permainan
+void drawTitle() {
+
+    attron(COLOR_PAIR(2) | A_BOLD);
+
+    mvprintw(2, 13, "======================");
+    mvprintw(3, 13, "       PAC-MAN        ");
+    mvprintw(4, 13, "======================");
+
+    attroff(COLOR_PAIR(2) | A_BOLD);
+}
+
+// Menampilkan menu utama
+void drawMenu() {
+
+    clear();
+
+    drawTitle();
+
+    attron(A_BOLD);
+
+    mvprintw(7, 20, "MAIN MENU");
+
+    attroff(A_BOLD);
+
+    mvprintw(10, 17, "[1] START GAME");
+    mvprintw(12, 17, "[2] LEADERBOARD");
+    mvprintw(14, 17, "[3] SEARCH PLAYER");
+    mvprintw(16, 17, "[4] INSTRUCTIONS");
+
+    attron(COLOR_PAIR(2));
+
+    mvprintw(
+        22, 7,
+        "Collect dots, avoid ghosts, and get the highest score!"
+    );
+
+    attroff(COLOR_PAIR(2));
+
+    refresh();
+}
