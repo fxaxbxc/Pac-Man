@@ -2,6 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
+
+using namespace std;
 
 // Mengatur konfigurasi permainan
 const int LEBAR = 31;
@@ -36,6 +39,14 @@ char simbolHantu[JUMLAH_HANTU] = {
     'R', 'P', 'B', 'O'
 };
 
+// Konfigurasi leaderboard
+const int MAKS_SKOR = 100;
+
+int jumlahSkor = 0;
+
+string namaPemain[MAKS_SKOR];
+int skorPemain[MAKS_SKOR];
+
 // Menentukan posisi awal Pac-Man dan empat hantu
 void resetPositions() {
 
@@ -56,6 +67,7 @@ void resetPositions() {
     hantuX[3] = 17;
     hantuY[3] = 9;
 }
+
 // Mengatur warna yang digunakan dalam permainan
 void initializeColors() {
 
@@ -146,6 +158,7 @@ void initializeMap() {
         }
     }
 }
+
 // Mengatur ulang kondisi permainan
 void resetGame() {
 
@@ -331,30 +344,32 @@ void drawGame() {
  
     refresh();
 
+}
+
     // cek posisisi hantu lain
 
     bool ghostOccupied(int x, int y, int currentGhost) {
 
-        for (int i = 0; i < GHOST_COUNT; i ++) {
+        for (int i = 0; i < JUMLAH_HANTU; i ++) {
 
-            if ( i == curentGhost) {
+            if ( i == currentGhost) {
                 continue;
             }
 
-            if (ghostX[i] == && ghostY[i] == y){
-
+            if (hantuX[i] == x && hantuY[i] == y){
                 return true;
             }
         }
+        
         return false;
     }
 
-    // PERGERAKAN EMPAT HANTU
+// PERGERAKAN EMPAT HANTU
     void moveGhosts() {
          int dx[4] =   {0, 0, -1, 1};
          int dy[4] = {-1, 1, 0, 0};
           
-         for (int index = 0; indeks < JUMLAH_HANTU; indeks++) {
+         for (int indeks = 0; indeks < JUMLAH_HANTU; indeks++) {
 
             int posisiTerbaikX = hantuX[indeks];
             int posisiTerbaikY = hantuY[indeks];
@@ -365,12 +380,12 @@ void drawGame() {
 // MENCARI JALUR TERDEKAT
             for (int arah = 0; arah < 4; arah++) {
 
-                int tujuanX = hantuX[indeks] + arahX[arah];
-                int tujuanY = hantuY[indeks] + arahY[arah];
+                int tujuanX = hantuX[indeks] + dx[arah];
+                int tujuanY = hantuY[indeks] + dy[arah];
 
 // MENGHINDARI DINDING DAN HANTU LAIN
 
-            if (!sWall(tujuanX, tujuanY) && !ghostOccupied(tujuanX, tujuanY, indeks)) {
+            if (!isWall(tujuanX, tujuanY) && !ghostOccupied(tujuanX, tujuanY, indeks)) {
             int jarak = abs(pemainX - tujuanX) + abs(pemainY - tujuanY);
             if (jarak < jarakTerbaik) {
         jarakTerbaik = jarak;
@@ -380,14 +395,13 @@ void drawGame() {
     }
 }
             }
-            hantuX[indeks] = posisiTerbaikx;
+            hantuX[indeks] = posisiTerbaikX;
             hantuY[indeks] = posisiTerbaikY;
          }
     }
     // RESET POSISI SETELAH TABRAKAN
-}
 
-// Membaca tex file
+// Membaca text file
 
 void loadLeaderboard() {
 
