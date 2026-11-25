@@ -384,3 +384,26 @@ void drawGame() {
     }
     // RESET POSISI SETELAH TABRAKAN
 }
+
+// Membaca tex file
+
+void loadLeaderboard() {
+
+    ifstream file("score.txt");
+
+    jumlahSkor = 0;
+
+    string nama;
+    int nilai;
+
+    while (file >> nama >> nilai &&
+           jumlahSkor < MAKS_SKOR) {
+
+        namaPemain[jumlahSkor] = nama;
+        skorPemain[jumlahSkor] = nilai;
+
+        jumlahSkor++;
+    }
+
+    file.close();
+}
