@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include <iostream>
 
 // Mengatur konfigurasi permainan
 const int LEBAR = 31;
