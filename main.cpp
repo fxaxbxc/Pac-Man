@@ -197,6 +197,7 @@ void drawMenu() {
     mvprintw(12, 17, "[2] LEADERBOARD");
     mvprintw(14, 17, "[3] SEARCH PLAYER");
     mvprintw(16, 17, "[4] INSTRUCTIONS");
+    mvprintw(18, 17, "[5] EXIT");
 
     attron(COLOR_PAIR(2));
 
