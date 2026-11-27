@@ -451,3 +451,45 @@ void sortLeaderboard() {
         }
     }
 }
+
+// MENYIMPAN SKOR
+
+void saveScore() {
+
+    clear();
+
+    char nama[30];
+
+    mvprintw(10, 10, "GAME FINISHED!");
+
+    mvprintw(12, 10, "Enter player name:");
+
+    refresh();
+
+    nodelay(stdscr, FALSE);
+
+    echo();
+
+    mvgetnstr(14, 10, nama, 25);
+
+    noecho();
+
+    nodelay(stdscr, TRUE);
+
+    if (string(nama).empty()) {
+        return;
+    }
+
+    ofstream file("score.txt", ios::app);
+
+    if (file.is_open()) {
+
+        file << nama << " " << skor << endl;
+
+        file.close();
+    }
+
+    loadLeaderboard();
+
+    sortLeaderboard();
+}
