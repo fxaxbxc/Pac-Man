@@ -609,3 +609,71 @@ void showLeaderboard() {
 
     nodelay(stdscr, TRUE);
 }
+
+// LINEAR SEARCH
+
+void searchPlayer() {
+
+    loadLeaderboard();
+
+    clear();
+
+    char targetNama[30];
+
+    mvprintw(5, 10, "SEARCH PLAYER");
+
+    mvprintw(8, 10, "Enter player name:");
+
+    refresh();
+
+    nodelay(stdscr, FALSE);
+
+    echo();
+
+    mvgetnstr(10, 10, targetNama, 25);
+
+    noecho();
+
+    nodelay(stdscr, TRUE);
+
+    clear();
+
+    mvprintw(3, 10, "SEARCH RESULT");
+
+    bool ditemukan = false;
+
+    int barisHasil = 6;
+
+    // Mencari nama pemain satu per satu
+    for (int indeks = 0; indeks < jumlahSkor; indeks++) {
+
+        if (namaPemain[indeks] == targetNama) {
+
+            mvprintw(
+                barisHasil++,
+                10,
+                "Player: %s | Score: %d",
+                namaPemain[indeks].c_str(),
+                skorPemain[indeks]
+            );
+
+            ditemukan = true;
+        }
+    }
+
+    if (!ditemukan) {
+
+        mvprintw(8, 10, "Player not found!");
+    }
+
+    mvprintw(22, 10, "Press any key to return");
+
+    refresh();
+
+    nodelay(stdscr, FALSE);
+
+    getch();
+
+    nodelay(stdscr, TRUE);
+}
+
