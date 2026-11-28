@@ -401,6 +401,72 @@ void drawGame() {
     }
     // RESET POSISI SETELAH TABRAKAN
 
+    void respawn() {
+        // MENGEMBALIKAN POSISI PEMAIN DAN HANTU
+        // TANPA MENGUBAH LABIRIN DAN SKOR
+
+        resetpositions();
+
+    }
+
+    // DETEKSI TABRAKAN
+     void chekCollision() {
+         for (int indeks = 0; indeks < JUMLAH_HANTU; indeks++) {
+
+            if (pemainX == hantuX[indeks] && pemainY == hantuY[indeks]) {
+                nyaawa--;
+                if (nyawa <= 0) {
+                    statusPermainan = 2;
+                } else {
+                    respawnPlayers();
+                }
+
+                break
+                }
+            }
+         }
+
+// INPUT PEMAIN
+
+bool handleInput(int tombol) {
+
+    switch (tombol) {
+
+        case KEY_UP:
+        case 'w':
+        case 'W':
+            movePlayer(0, -1);
+            break;
+
+        case KEY_DOWN:
+        case 's':
+        case 'S':
+            movePlayer(0, 1);
+            break;
+
+        case KEY_LEFT:
+        case 'a':
+        case 'A':
+            movePlayer(-1, 0);
+            break;
+
+        case KEY_RIGHT:
+        case 'd':
+        case 'D':
+            movePlayer(1, 0):
+            break;
+
+        case 'q':
+        case 'Q':
+            return false;
+    }
+    return true;
+}
+
+
+
+     
+
 // Membaca text file
 
 void loadLeaderboard() {
