@@ -1,21 +1,4 @@
-````markdown
 # 👾 Pac-Man — Maze Adventure
-
-> 🎮 Final Project Pemrograman C++
->
-> Game Pac-Man berbasis terminal menggunakan C++ dan Ncurses. Kumpulkan seluruh titik, hindari empat hantu, dan selesaikan labirin sebelum kehabisan nyawa!
-
----
-
-## 🗺️ Tentang Game
-
-Pac-Man merupakan game klasik yang dikembangkan menggunakan bahasa pemrograman C++ dengan library Ncurses.
-
-Pemain mengendalikan Pac-Man untuk menjelajahi labirin, mengumpulkan titik, dan menghindari empat hantu yang bergerak mendekati posisi pemain.
-
-Proyek ini menerapkan konsep pemrograman prosedural, pengelolaan alur permainan, deteksi tabrakan, serta pengolahan data menggunakan file eksternal.
-
--# 👾 Pac-Man — Maze Adventure
 
 > 🎮 **Final Project Pemrograman C++**
 >
@@ -52,13 +35,15 @@ Proyek ini menerapkan konsep pemrograman prosedural, pengelolaan alur permainan,
 
 ## 🧩 Struktur Repository
 
+Berikut struktur file proyek Pac-Man:
+
 ```text
 📦 Pac-Man
  ┣ 📜 .gitignore
  ┣ 📜 README.md
  ┣ 📜 main
- ┗ 📜 main.cppcpp
-````
+ ┗ 📜 main.cpp
+```
 
 ### 📌 Penjelasan File
 
