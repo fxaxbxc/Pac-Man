@@ -182,10 +182,10 @@ Program ini menggunakan pendekatan pemrograman prosedural dengan fungsi-fungsi y
 
 ### 👥 Tim Pengembang
 
-Universitas Lampung
+Kelompok 3 Kelas A
 
 | Nama             | NPM   |
 | ---------------- | ----- |
-| [Farid Hidayattulloh] | [2617051033] |
-| [Naura Cindra Rahmadani] | [2617051045] |
-| [Mitha Aprilia] | [261701009] |
+| Farid Hidayattulloh | 2617051033 |
+| Naura Cindra Rahmadani | 2617051045 |
+| Mitha Aprilia | 261701009 |
