@@ -677,3 +677,30 @@ void searchPlayer() {
     nodelay(stdscr, TRUE);
 }
 
+// INSTRUCTIONS
+
+void showInstructions() {
+
+    clear();
+
+    mvprintw(3, 12, "HOW TO PLAY");
+
+    mvprintw(7, 10, "W / UP       : Move Up");
+    mvprintw(9, 10, "S / DOWN     : Move Down");
+    mvprintw(11, 10, "A / LEFT     : Move Left");
+    mvprintw(13, 10, "D / RIGHT    : Move Right");
+
+    mvprintw(16, 10, "Collect all dots to win!");
+
+    mvprintw(18, 10, "Avoid ghosts and protect your lives.");
+
+    mvprintw(22, 10, "Press any key to return");
+
+    refresh();
+
+    nodelay(stdscr, FALSE);
+
+    getch();
+
+    nodelay(stdscr, TRUE);
+}
