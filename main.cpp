@@ -493,3 +493,53 @@ void saveScore() {
 
     sortLeaderboard();
 }
+
+// LEADERBOARD
+
+void showLeaderboard() {
+
+    loadLeaderboard();
+
+    sortLeaderboard();
+
+    clear();
+
+    attron(COLOR_PAIR(2) | A_BOLD);
+
+    mvprintw(2, 15, "LEADERBOARD");
+
+    attroff(COLOR_PAIR(2) | A_BOLD);
+
+    mvprintw(5, 10, "RANK");
+    mvprintw(5, 20, "PLAYER");
+    mvprintw(5, 40, "SCORE");
+
+    for (int indeks = 0; indeks < jumlahSkor && indeks < 10; indeks++) {
+
+        mvprintw(7 + indeks, 11, "%d", indeks + 1);
+
+        mvprintw(
+            7 + indeks,
+            20,
+            "%s",
+            namaPemain[indeks].c_str()
+        );
+
+        mvprintw(
+            7 + indeks,
+            40,
+            "%d",
+            skorPemain[indeks]
+        );
+    }
+
+    mvprintw(21, 12, "Press any key to return");
+
+    refresh();
+
+    nodelay(stdscr, FALSE);
+
+    getch();
+
+    nodelay(stdscr, TRUE);
+}
